@@ -8,7 +8,7 @@ const TabIcon = ({ title, focused, icon }) => {
     return (
       <ImageBackground
         source={images.highlight}
-        className="flex-row min-w-[112px] min-h-14 mt-4 justify-center items-center rounded-full overflow-hidden"
+        className="flex-row min-w-[112px] min-h-16 mt-4 justify-center items-center rounded-full overflow-hidden"
       >
         <Image source={icon} tintColor="#151312" className="size-5" />
         <Text className="text-secondary font-semibold text-base ml-2">
@@ -27,11 +27,26 @@ const TabIcon = ({ title, focused, icon }) => {
 
 export default function Layout() {
   return (
-    <Tabs screenOptions={{ headerShown: false }}>
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          backgroundColor: "#0f0d23",
+          borderRadius: 50,
+          marginTop: 10,
+          marginBottom: 30,
+          height: 52,
+          position: "absolute",
+          overflow: "hidden",
+          borderWidth: 1,
+          borderColor: "#0f0d23",
+        },
+      }}
+    >
       <Tabs.Screen
         name="search"
         options={{
-          title: "Search",
           tabBarIcon: ({ focused }) => (
             <TabIcon focused={focused} title="Search" icon={icons.search} />
           ),
@@ -41,7 +56,6 @@ export default function Layout() {
       <Tabs.Screen
         name="home"
         options={{
-          title: "Home",
           tabBarIcon: ({ focused }) => (
             <TabIcon focused={focused} title="Home" icon={icons.home} />
           ),
@@ -51,9 +65,8 @@ export default function Layout() {
       <Tabs.Screen
         name="saved"
         options={{
-          title: "Saved",
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} title="Saved" icon={icons.save} />
+            <TabIcon focused={focused} title="Saved" icon={icons.saved} />
           ),
         }}
       />
@@ -61,7 +74,6 @@ export default function Layout() {
       <Tabs.Screen
         name="profile"
         options={{
-          title: "Profile",
           tabBarIcon: ({ focused }) => (
             <TabIcon focused={focused} title="Profile" icon={icons.person} />
           ),
