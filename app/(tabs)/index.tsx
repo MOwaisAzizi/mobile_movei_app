@@ -4,6 +4,7 @@ import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
   ActivityIndicator,
+  FlatList,
   Image,
   ScrollView,
   Text,
@@ -19,7 +20,7 @@ export default function Index() {
 
   const {
     data: movies,
-    loading,
+    loading: moviesLoading,
     error,
   } = useFetch(() => fetchMovies({ query: "" }));
 
@@ -53,7 +54,8 @@ export default function Index() {
         </View>
 
         {/* Loading / Error */}
-        {loading && (
+        { moviesLoading
+ && (
           <ActivityIndicator
             size="large"
             color="#ffffff"
@@ -61,18 +63,38 @@ export default function Index() {
           />
         )}
 
-        {error && !loading && (
+        {error && !moviesLoading && (
           <Text className="text-white text-center mt-10">
             Error: {error.message}
           </Text>
         )}
 
         {/* Example: Render Movies Count */}
-        {!loading && !error && movies && (
-          <Text className="text-white text-center mt-10">
-            Movies Loaded: {movies.length}
-          </Text>
-        )}
+ {!moviesLoading && !error && movies && (
+  <>
+    <Text className="text-white text-center mt-10">
+      Movies Loaded: {movies.length}
+    </Text>
+
+    <FlatList
+      data={movies}
+      renderItem={({ item }) => (
+        <Text className="text-white">
+          {item.title}
+        </Text>
+      )}
+      numColumns={3}
+      columnWrapperStyle={{
+        justifyContent: 'space-between',
+        marginBottom: 10,
+        paddingRight: 10,
+      }}
+      keyExtractor={(item) => item.id.toString()}
+      className="mt-2 mb-3"
+    />
+  </>
+)}
+
       </ScrollView>
     </View>
   );
