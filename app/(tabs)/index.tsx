@@ -82,7 +82,18 @@ export default function Index() {
         <Text className="text-white">
           {item.title}
         </Text>
+        <view>
+          <Image source={icons.star}/>
+          <Text>
+            {Math.round(item.vote_average)}
+          </Text>
+        </view>
+
+        <view>
+          <text>{item.release_date.split('-')[0]}</text>
+        </view>
       )}
+      
       numColumns={3}
       columnWrapperStyle={{
         justifyContent: 'space-between',
