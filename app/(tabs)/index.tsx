@@ -1,7 +1,6 @@
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
 import { useRouter } from "expo-router";
-import { useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
@@ -10,13 +9,12 @@ import {
   Text,
   View,
 } from "react-native";
-import SearchBar from "./searchBar";
+import { Search } from "./search";
 import useFetch from "@/services/useFetch";
-import { fetchMovies } from "@/services/api"; // ✅ make sure this exists
+import { fetchMovies } from "@/services/api";
 
 export default function Index() {
   const router = useRouter();
-  const [logoError, setLogoError] = useState(false);
 
   const {
     data: movies,
@@ -41,13 +39,12 @@ export default function Index() {
           <Image
             source={icons.logo}
             className="w-24 h-12 mt-20 mb-5 self-center"
-            onError={() => setLogoError(true)}
           />
 
 
         {/* Search */}
         <View className="mt-5 border border-gray-300 rounded-2xl bg-white shadow-md px-3">
-          <SearchBar
+          <Search
             placeholder="search..."
             onPress={() => router.push("/searchBar")}
           />
@@ -79,19 +76,16 @@ export default function Index() {
     <FlatList
       data={movies}
       renderItem={({ item }) => (
-        <Text className="text-white">
+        <><Text className="text-white">
           {item.title}
-        </Text>
-        <view>
-          <Image source={icons.star}/>
-          <Text>
-            {Math.round(item.vote_average)}
-          </Text>
-        </view>
-
-        <view>
-          <text>{item.release_date.split('-')[0]}</text>
-        </view>
+        </Text><view>
+            <Image source={icons.star} />
+            <Text>
+              {Math.round(item.vote_average)}
+            </Text>
+          </view><view>
+            <text>{item.release_date.split('-')[0]}</text>
+          </view></>
       )}
       
       numColumns={3}

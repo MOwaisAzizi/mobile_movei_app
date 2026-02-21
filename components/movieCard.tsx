@@ -9,7 +9,7 @@ export const MovieCard = ({
   release_date,
 }: Movie) => {
   return (
-    <Link href={`/movie/${id}`} asChild>
+    <Link href={`/movies/${id}`} asChild>
       <TouchableOpacity className="movie-card">
         <Image
           source={{ uri: `https://image.tmdb.org/t/p/w500${poster_path}` }}
