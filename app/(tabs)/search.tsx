@@ -44,7 +44,7 @@ useEffect(() => {
         placeholderTextColor="gray"
         value={searchQuery}
         onChangeText={setSearchQuery}
-        className="bg-white/10 text-white px-4 py-3 rounded-full mt-6"
+        className="bg-white/10 text-white px-4 py-3 border rounded-full mt-16"
       />
 
       <FlatList
@@ -62,17 +62,17 @@ useEffect(() => {
           paddingTop: 10,
         }}
         showsVerticalScrollIndicator={false}
-        ListEmptyComponent={
-          !loading && !error ? (
-            <View className="w-full mt-10 justify-center items-center">
-              <Text className="text-gray-400 text-center">
-                {searchQuery.length > 0
-                  ? "No movies found"
-                  : "Search for movies"}
-              </Text>
-            </View>
-          ) : null
-        }
+        // ListEmptyComponent={
+        //   !loading && !error ? (
+        //     <View className="w-full mt-10 justify-center items-center">
+        //       <Text className="text-gray-400 text-center">
+        //         {searchQuery.length > 0
+        //           ? "No movies found"
+        //           : "Search for movies"}
+        //       </Text>
+        //     </View>
+        //   ) : null
+        // }
       />
     </View>
   );

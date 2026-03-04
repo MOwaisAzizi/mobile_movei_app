@@ -1,8 +1,9 @@
 import { icons } from "@/constants/icons";
 import { fetchMovieDetials } from "@/services/api";
 import useFetch from "@/services/useFetch";
-import { useRouter, useSearchParams } from "expo-router";
+import { useRouter } from "expo-router";
 import React, { useEffect } from "react";
+import { useSearchParams } from "expo-router/build/hooks";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 const Details = () => {

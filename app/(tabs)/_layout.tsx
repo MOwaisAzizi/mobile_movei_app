@@ -1,6 +1,7 @@
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
 import { Tabs } from "expo-router";
+import '../globals.css'
 import { Image, ImageBackground, Text, View } from "react-native";
 
 const TabIcon = ({ title, focused, icon }) => {
@@ -66,7 +67,7 @@ export default function Layout() {
         name="saved"
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} title="Saved" icon={icons.saved} />
+            <TabIcon focused={focused} title="Saved" icon={icons.save} />
           ),
         }}
       />

@@ -23,7 +23,7 @@ export default function Index() {
 
       <View className="flex-1 px-5">
         <View className="mb-4">
-          <Search placeholder="Search movies..." />
+          <Search/>
         </View>
 
         {moviesLoading && (
